@@ -1,0 +1,184 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+force_color_prompt=yes
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+# bash_history settings: size and no duplicates and no lines w/ lead spaces
+export HISTCONTROL="ignoreboth"
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=1024
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# Enable 256 colors, but do not mess with tmux' TERM
+if [[ -z "$TMUX" ]]; then \
+    export TERM=xterm-256color
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if its already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+# FROM Mike Stewart - http://mediadoneright.com/content/ultimate-git-ps1-bash-prompt
+# Color codes shamelessly stolen from http://scriptechocolor.sourceforge.net/
+# Modifiers
+Off="\[\e[0m\]"
+Bold="\[\e[1m\]"
+Dim="\[\e[2m\]"
+Underline="\[\e[4m\]"
+Blink="\[\e[5m\]"
+Reverse="\[\e[7m\]"
+Strike="\[\e[9m\]"
+
+### FOREGROUND ###
+# Regular Colors
+FgBlack="\[\e[30m\]"   # Black
+FgRed="\[\e[31m\]"     # Red
+FgGreen="\[\e[32m\]"   # Green
+FgYellow="\[\e[33m\]"  # Yello
+FgBlue="\[\e[34m\]"    # Blue
+FgMagenta="\[\e[35m\]" # Magenta
+FgCyan="\[\e[36m\]"    # Cyan
+FgWhite="\[\e[37m\]"   # White
+
+# Light Colors
+FgLtBlack="\[\e[90m\]"   # Black
+FgLtRed="\[\e[91m\]"     # Red
+FgLtGreen="\[\e[92m\]"   # Green
+FgLtYellow="\[\e[93m\]"  # Yellow
+FgLtBlue="\[\e[94m\]"    # Blue
+FgLtMagenta="\[\e[95m\]" # Magenta
+FgLtCyan="\[\e[96m\]"    # Cyan
+FgLtWhite="\[\e[97m\]"   # White
+
+### BACKGROUND ###
+# Regular Colors
+BgBlack="\[\e[40m\]"   
+BgRed="\[\e[41m\]"     # Red
+BgGreen="\[\e[42m\]"   # Green
+BgYellow="\[\e[43m\]"  # Yellow
+BgBlue="\[\e[44m\]"    # Blue
+BgMagenta="\[\e[45m\]" # Purple
+BgCyan="\[\e[46m\]"    # Cyan
+BgWhite="\[\e[47m\]"   # White
+
+# Light Colors
+BgLtBlack="\[\e[100m\]"   # Black
+BgLtRed="\[\e[101m\]"     # Red
+BgLtGreen="\[\e[102m\]"   # Green
+BgLtYellow="\[\e[103m\]"  # Yellow
+BgLtBlue="\[\e[104m\]"    # Blue
+BgLtMagenta="\[\e[105m\]" # Magenta
+BgLtCyan="\[\e[106m\]"    # Cyan
+BgLtWhite="\[\e[107m\]"   # White
+
+# Various variables you might want for your PS1 prompt instead
+Time12h="\T"
+Time24h="\A"
+Time12a="\@"x
+PathShort="\w"
+PathFull="\W"
+NewLine="\n"
+Jobs="\j"
+User="\u"
+Host="\h"
+
+black="\[\033[0;38;5;0m\]"
+green="\[\033[0;38;5;2m\]"
+blue="\[\033[0;38;5;4m\]"
+magenta="\[\033[0;38;5;55m\]"
+cyan="\[\033[0;38;5;6m\]"
+smoothblue="\[\033[0;38;5;111m\]"
+iceblue="\[\033[0;38;5;45m\]"
+turqoise="\[\033[0;38;5;50m\]"
+red="\[\e[1;31m\]"
+coldblue="\[\e[1;34m\]"
+orange="\[\e[0;33m\]"
+white="\[\e[1;37m\]"
+smoothgreen="\[\e[1;32m\]"
+darkgrey="\[\e[1;30m\]"
+lightgrey="\[\e[0;37m\]"
+
+source /usr/share/git/completion/git-prompt.sh
+
+PS1=$FgLtBlack[' '$FgCyan$PathShort' '$FgLtBlack\|' '$smoothblue$Time24h$FgLtBlack' ']\\n' '$FgBlue$User$FgLtBlack@$FgBlue$Host'$(\
+if [ -n "$VIRTUAL_ENV" ]; then \
+  echo -n " '$FgLtBlack'('$FgGreen'`basename $VIRTUAL_ENV`'$FgLtBlack')"; \
+fi
+if [ -n "$(__git_ps1)" ]; then \
+  echo -n " '$FgLtBlack'('$FgRed'`__git_ps1 "%s"`'$FgLtBlack')"; \
+fi; echo " '$FgYellow'\$")'$Off' '
+
+
+# Bash functions
+function switch() { ln -fs "$2" "$1" ;}
+
+# Virtualenv
+export VIRTUAL_ENV_DISABLE_PROMPT=false
+# Virtualenvwrapper stuff
+if [ $USER == gabe ]; then
+    export VIRTUALENV_USE_DISTRIBUTE=1
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/dev/python
+    export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_RESPECT_VIRTUALENV=true
+    source /usr/bin/virtualenvwrapper.sh
+fi

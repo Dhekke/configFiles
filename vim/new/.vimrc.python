@@ -1,0 +1,5 @@
+syntax on
+
+au FileType py set autoindent   " Indent new line
+au FileType py set smartindent  " Indent after symbols (like colon)
+au FileType py set textwidth=79 " PEP-8 Friendly

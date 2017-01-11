@@ -1,0 +1,8 @@
+chromium-pepper-flash
+cower
+dropbox
+google-talkplugin
+gummiboot
+spotify
+sublime-text-dev
+ttf-ms-fonts
