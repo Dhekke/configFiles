@@ -27,7 +27,7 @@ function! GvimColorTest(outfile)
         let kw = printf('%-13s', printf('c_%d_%d_%d', red, green, blue))
         let fg = printf('#%02x%02x%02x', red, green, blue)
         let bg = '#fafafa'
-        let h = printf('hi %s guifg=%s guibg=%s', kw, fg, bg)
+        let h = printf('hi %s guifg=%s guibg=%s', kw, bg, fg)
         let s = printf('syn keyword %s %s', kw, kw)
         call add(result, printf('%s | %s', h, s))
       endfor
