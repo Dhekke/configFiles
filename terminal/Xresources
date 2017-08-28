@@ -1,0 +1,65 @@
+! TrueType font and size
+xterm*faceName: Ubuntu Mono
+xterm*faceSize: 17
+!XTerm*font: -*-ubuntu mono-medium-r-*-*-17-*-*-*-*-*-iso10746-*
+!UXTerm*font: -*-ubuntu mono-medium-r-*-*-17-*-*-*-*-*-iso10746-*
+
+! Every shell is a login shell
+xterm*loginshell: true
+
+! Size of scrollback
+xterm*savelines: 2000
+
+! double-click select whole URLs
+xterm*charClass: 33:42,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! TERM type
+xterm*termName: xterm-color
+
+! Colors!
+! Baskerville - Eldorado Park | xcolors.net
+xterm*background: rgb:29/29/29
+xterm*foreground: rgb:A2/A2/A2
+! BLACK
+xterm*color0:     rgb:4E/4E/4E
+xterm*color8:     rgb:77/77/77
+! RED
+xterm*color1:     rgb:A9/63/5D
+xterm*color9:     rgb:FF/BB/B2
+! GREEN
+xterm*color2:     rgb:46/84/59
+xterm*color10:    rgb:9D/DE/AF
+! YELLOW
+xterm*color3:     rgb:84/76/3D
+xterm*color11:    rgb:E0/CE/91
+! BLUE
+xterm*color4:     rgb:58/79/AF
+xterm*color12:    rgb:B3/D1/FF
+! MAGENTA
+xterm*color5:     rgb:9C/65/94
+xterm*color13:    rgb:FA/BD/F0
+! CYAN
+xterm*color6:     rgb:00/85/92
+xterm*color14:    rgb:79/E0/ED
+! WHITE
+xterm*color7:     rgb:CF/CF/CF
+xterm*color15:    rgb:FF/FF/FF
+
+! right-hand sidescrollbar
+xterm*rightScrollBar: true
+xterm*ScrollBar: true
+
+! Make bold bright, instead of bold
+xterm*boldMode: false
+! Makes bold uncolored = white
+*VT100.colorBDMode: true
+*VT100.colorBD:     rgb:FF/FF/FF
+
+! Make copy/paste work
+xterm*VT100.Translations: #override \
+	Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+	Ctrl Shift <Key>C: copy-selection(CLIPBOARD)
+
+!*VT100.colorULMode:     true
+!*VT100.colorUL:         cyan
+!*VT100.veryBoldColors: 7
