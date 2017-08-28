@@ -4,8 +4,8 @@ filetype off		" required
 " set the runtime path to include Vundle and initialize
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/Dropbox/Pessoal/dev/config_files/vim/bundle/Vundle.vim
+call vundle#begin('~/Dropbox/Pessoal/dev/config_files/vim/bundle')
 
 "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
