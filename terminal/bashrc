@@ -160,6 +160,10 @@ lightgrey="\[\e[0;37m\]"
 
 source /usr/share/git/completion/git-prompt.sh
 
+#Reference:
+#  http://bashrcgenerator.com/
+#  https://www.kirsle.net/wizards/ps1.html#help
+#  http://omar.io/ps1gen/
 PS1=$FgLtBlack[' '$FgCyan$PathShort' '$FgLtBlack\|' '$smoothblue$Time24h$FgLtBlack' ']\\n' '$FgBlue$User$FgLtBlack@$FgBlue$Host'$(\
 if [ -n "$VIRTUAL_ENV" ]; then \
   echo -n " '$FgLtBlack'('$FgGreen'`basename $VIRTUAL_ENV`'$FgLtBlack')"; \
