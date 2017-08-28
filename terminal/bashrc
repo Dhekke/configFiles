@@ -31,7 +31,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # Enable 256 colors, but do not mess with tmux' TERM
-if [[ -z "$TMUX" ]]; then \
+if [[ "$TERM" != "linux" && -z "$TMUX" ]]; then \
     export TERM=xterm-256color
 fi
 
@@ -50,6 +50,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias diff='diff --color=auto'
 fi
 
 # some more ls aliases
